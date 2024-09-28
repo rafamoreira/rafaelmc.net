@@ -1,5 +1,4 @@
-from flask import Blueprint, flash, g, redirect, render_template, request, url_for
-from werkzeug.exceptions import abort
+from flask import Blueprint, render_template
 
 bp = Blueprint("blog", __name__, url_prefix="/blog")
 
