@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "rafaelmc-net"
+version = "0.1.0"
+description = ""
+authors = ["Rafael M Cunha <me@rafaelmc.net>"]
+readme = "README.md"
+packages = [{include = "rafaelmc"}]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+Flask = "^3.0.3"
+
+[tool.poetry.group.dev.dependencies]
+ipython = "^8.27.0"
+djlint = "^1.35.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
