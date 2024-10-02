@@ -30,8 +30,10 @@ def create_app(test_config=None):
         return "Hello, World!"
 
     from . import blog
+    from . import main
 
     app.register_blueprint(blog.bp)
-    app.add_url_rule("/", endpoint="index")
+    app.register_blueprint(main.bp)
+    # app.add_url_rule("/", endpoint="index")
 
     return app
