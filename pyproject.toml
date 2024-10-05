@@ -9,7 +9,6 @@ packages = [{include = "rafaelmc"}]
 [tool.poetry.dependencies]
 python = "^3.12"
 Flask = "^3.0.3"
-waitress = "^3.0.0"
 
 [tool.poetry.group.dev.dependencies]
 ipython = "^8.27.0"

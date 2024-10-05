@@ -35,4 +35,4 @@ ENV FLASK_RUN_HOST=0.0.0.0
 # USER appuser
 
 # Run both Caddy and Waitress
-CMD caddy run --config /etc/caddy/Caddyfile & waitress-serve --call main:create_app
+CMD caddy run --config /etc/caddy/Caddyfile & gunicorn -w 4 'main:create_app()' --access-logfile=/var/log/gunicorn-access.log --error-logfile=/var/log/gunicorn-error.log
