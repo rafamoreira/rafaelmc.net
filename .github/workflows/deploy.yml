@@ -28,7 +28,8 @@ jobs:
         mkdir -p ~/.ssh
         echo "$SSH_PRIVATE_KEY" > ~/.ssh/id_ed25519
         chmod 600 ~/.ssh/id_ed25519
-        ssh-keyscan -H 49.12.202.223 >> ~/.ssh/known_hosts
+        ssh-keyscan -H 49.12.202.223 >> ~/.ssh/known_hosts || (echo "ssh-keyscan failed" && exit 1)
+        ssh -i ~/.ssh/id_ed25519 -T root@49.12.202.223
 
     - name: Login to GitHub Container Registry
       uses: docker/login-action@v2
