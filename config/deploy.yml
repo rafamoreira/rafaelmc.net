@@ -17,8 +17,8 @@ servers:
 # Set ssl: false if using something like Cloudflare to terminate SSL (but keep host!).
 proxy:
   ssl: true
-  host: www.rafaelmc.net 
   hosts:
+    - www.rafaelmc.net
     - rafaelmc.net
   # kamal-proxy connects to your container over port 80, use `app_port` to specify a different port.
   app_port: 80
