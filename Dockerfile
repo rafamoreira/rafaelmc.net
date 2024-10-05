@@ -25,4 +25,4 @@ ENV FLASK_APP=main
 ENV FLASK_RUN_HOST=0.0.0.0
 
 # Run the application
-CMD ["flask", "run"]
+CMD ["waitress-serve", "--call", "main:create_app"]
