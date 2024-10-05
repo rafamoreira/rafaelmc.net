@@ -25,10 +25,6 @@ def create_app(test_config=None):
         pass
 
     # a simple page that says hello
-    @app.route("/")
-    def root():
-        return "Hello, World!"
-
     from . import blog
     from . import main
 
