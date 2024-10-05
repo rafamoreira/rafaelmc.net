@@ -1,12 +1,17 @@
-:80 {
-	#static
-	file_server /static/* {
-		root /app/main
-	}
-	reverse_proxy localhost:8000
+{
 	log {
 		output file /var/log/caddy/access.log
 		format json
+	}
+}
+:80 {
+	#static
+	handle_path /static/* {
+		root * /app/main
+		file_server
+	}
+	handle {
+		reverse_proxy localhost:8000
 	}
 }
 
