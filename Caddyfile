@@ -4,9 +4,17 @@
 		root /app/main
 	}
 	reverse_proxy localhost:8080
+	log {
+		output file /var/log/caddy/access.log
+		format json
+	}
 }
 
 www.rafaelmc.net:80 {
 	redir https://rafaelmc.net{uri}
+	log {
+		output file /var/log/caddy/redirect.log
+		format json
+	}
 }
 
