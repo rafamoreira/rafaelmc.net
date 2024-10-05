@@ -7,7 +7,7 @@
 :80 {
 	#static
 	handle_path /static/* {
-		root * /app/main
+		root * /app/main/static
 		file_server
 	}
 	handle {
