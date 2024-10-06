@@ -13,7 +13,9 @@ ARTICLES_PATH = Path(__file__).resolve().parent.parent / "articles"
 
 @bp.route("/")
 def index():
-    files = sorted(os.listdir(ARTICLES_PATH), reverse=True)[:5]
+    files = sorted(
+        filter(lambda x: x.endswith(".md"), os.listdir(ARTICLES_PATH)), reverse=True
+    )
     meta = []
     for file in files:
         with open(ARTICLES_PATH / file) as f:
