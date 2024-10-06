@@ -5,6 +5,14 @@
 {% endblock %}
 
 {% block content %}
-<h2>Latest articles</h2>
-{{ articles }}
+    <h2>Latest posts</h2>
+<ul>
+        {% for post in posts %}
+
+    <li>
+        {{post.date}} <a href="{{ post.url }}">{{ post['title'] }}</a>
+
+    </li>
+        {% endfor %}
+</ul>
 {% endblock %}

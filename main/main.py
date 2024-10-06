@@ -1,6 +1,8 @@
 import os
 from pathlib import Path
 
+import markdown
+
 from flask import Blueprint, render_template
 
 
@@ -11,10 +13,21 @@ ARTICLES_PATH = Path(__file__).resolve().parent.parent / "articles"
 
 @bp.route("/")
 def index():
-    markdown_files = [f for f in os.listdir(ARTICLES_PATH) if f.endswith(".md")]
-    files = sorted(markdown_files, reverse=True)[:5]
-    Markdown
-    return render_template("main/index.html", articles=articles)
+    files = sorted(os.listdir(ARTICLES_PATH), reverse=True)[:5]
+    meta = []
+    for file in files:
+        with open(ARTICLES_PATH / file) as f:
+            md = markdown.Markdown(extensions=["meta"])
+            md.convert(f.read())
+            meta.append(
+                {
+                    "title": md.Meta["title"][0],
+                    "date": md.Meta["date"][0],
+                    "url": "/blog/post/" + file,
+                }
+            )
+
+    return render_template("main/index.html", posts=meta)
 
 
 @bp.route("/up")
