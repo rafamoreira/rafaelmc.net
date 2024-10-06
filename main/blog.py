@@ -30,6 +30,6 @@ def get_all_posts_meta():
 
 @bp.route("/")
 def index():
-    articles = [{"id": 1, "title": "a"}, {"id": 1, "title": "a"}]
+    posts = get_all_posts_meta()
 
-    return render_template("blog/index.html", articles=articles)
+    return render_template("blog/index.html", posts=posts)
