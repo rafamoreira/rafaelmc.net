@@ -15,13 +15,29 @@
     </head>
     <body>
         <main class="container">
-            <h1>rafaelmc.net</h1>
+            <nav>
+                <ul>
+                    <li>
+                        <h1>rafaelmc.net</h1>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <a href="{{ url_for("main.index") }}">Home</a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for("blog.index") }}">Blog</a>
+                    </li>
+                </ul>
+            </nav>
             <section class="content">
                 <header>
                     {% block header %}{% endblock %}
                 </header>
-                {% for message in get_flashed_messages() %}<div class="flash">{{ message }}</div>{% endfor %}
+                <hr>
                 {% block content %}{% endblock %}
+                <hr>
+                {% for message in get_flashed_messages() %}<div class="flash">{{ message }}</div>{% endfor %}
             </section>
         </main>
     </body>
