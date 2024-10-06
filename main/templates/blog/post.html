@@ -1,0 +1,13 @@
+{%  extends "base.html" %}
+{% block header %}
+    <h1>{% block title %}{{ post.title }}{% endblock %}</h1>
+{% endblock %}
+
+{% block content %}
+    <p class="font-headings">Published on {{ post.date }}</p>
+    <hr />
+    {{ post.content|safe }}
+    <div>
+        {{ content|safe }}
+    </div>
+{% endblock %}
