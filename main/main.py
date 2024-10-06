@@ -8,7 +8,7 @@ from flask import Blueprint, render_template
 
 bp = Blueprint("main", __name__)
 
-ARTICLES_PATH = Path(__file__).resolve().parent.parent / "articles"
+ARTICLES_PATH = Path(__file__).resolve().parent.parent / "posts"
 
 
 @bp.route("/")
