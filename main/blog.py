@@ -1,5 +1,6 @@
 import os
 from pathlib import Path
+from typing import Any
 
 import markdown
 
@@ -10,15 +11,15 @@ bp = Blueprint("blog", __name__, url_prefix="/blog")
 POSTS_PATH = Path(__file__).resolve().parent.parent / "posts"
 
 
-def get_all_posts_meta():
+def get_all_posts_meta() -> list[dict[str, Any]]:
     files = sorted(
         filter(lambda x: x.endswith(".md"), os.listdir(POSTS_PATH)), reverse=True
     )
-    posts = []
+    posts: list[dict[str, Any]] = []
     for file in files:
         with open(POSTS_PATH / file) as f:
             md = markdown.Markdown(extensions=["meta"])
-            md.convert(f.read())
+            _ = md.convert(f.read())
             posts.append(
                 {
                     "title": md.Meta["title"][0],
@@ -36,16 +37,16 @@ def index():
     return render_template("blog/index.html", posts=posts)
 
 
-@bp.route("/post/<post>")
-def post(post):
-    with open(POSTS_PATH / (post + ".md")) as f:
+@bp.route("/post/<post_title>")
+def post(post_title: str) -> str:
+    with open(POSTS_PATH / (post_title + ".md")) as f:
         md = markdown.Markdown(extensions=["meta", "fenced_code", "codehilite"])
         html = md.convert(f.read())
 
-        post = {
+        post_rendered: dict[str, Any] = {
             "title": md.Meta["title"][0],
             "date": md.Meta["date"][0],
             "content": html,
         }
 
-    return render_template("blog/post.html", post=post)
+    return render_template("blog/post.html", post=post_rendered)
