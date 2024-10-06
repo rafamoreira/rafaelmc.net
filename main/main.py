@@ -25,7 +25,7 @@ def index():
                 {
                     "title": md.Meta["title"][0],
                     "date": md.Meta["date"][0],
-                    "url": "/blog/post/" + file,
+                    "url": "/blog/post/" + file[:-3],
                 }
             )
 
