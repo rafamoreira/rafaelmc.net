@@ -4,7 +4,7 @@ version = "0.1.0"
 description = ""
 authors = ["Rafael M Cunha <me@rafaelmc.net>"]
 readme = "README.md"
-packages = [{include = "rafaelmc"}]
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.13"
