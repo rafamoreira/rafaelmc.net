@@ -7,7 +7,7 @@ readme = "README.md"
 packages = [{include = "rafaelmc"}]
 
 [tool.poetry.dependencies]
-python = "^3.12"
+python = "^3.13"
 Flask = "^3.0.3"
 gunicorn = "^23.0.0"
 markdown = "^3.7"
