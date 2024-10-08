@@ -3,7 +3,7 @@ title: Kamal v2 is awesome
 date: 2024-10-08
 ---
 
-A bit more than one year ago I wrote this post [# Deploying Django app with static files using Docker and Nginx proxy](https://rafaelmc.net/blog/post/0002_deploying_django_with_static_files_using_docker_and_nginx_proxy) and my opening line was:
+A bit more than one year ago I wrote this post [Deploying Django app with static files using Docker and Nginx proxy](https://rafaelmc.net/blog/post/0002_deploying_django_with_static_files_using_docker_and_nginx_proxy) and my opening line was:
 
 > This task is more complicated than I first thought it would be. 
 
