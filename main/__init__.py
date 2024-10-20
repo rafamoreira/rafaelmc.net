@@ -2,6 +2,8 @@ import os
 
 from flask import Flask
 
+SITE_URL = "https://rafaelmc.net"
+
 
 def create_app(test_config=None):
     # create and configure the app

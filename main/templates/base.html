@@ -12,6 +12,12 @@
             {% block title %}{% endblock %}
             - rafaelmc.net
         </title>
+        <link 
+            rel="alternate" 
+            type="application/rss+xml" 
+            href="/blog/feed" 
+            title="RSS Feed"
+        >
     </head>
     <body>
         <main class="container">
@@ -27,6 +33,9 @@
                     </li>
                     <li>
                         <a href="{{ url_for("blog.index") }}">Blog</a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for("blog.feed") }}">Feed</a>
                     </li>
                 </ul>
             </nav>
