@@ -1,24 +1,20 @@
-# Use Python Alpine as the base image
-FROM python:3.13-alpine
+# Use uv Python Alpine as the base image
+FROM ghcr.io/astral-sh/uv:python3.13-alpine
+
+# Install dependencies
+RUN apk add --no-cache caddy
 
 # Set the working directory in the container
 WORKDIR /app
 
-# Install poetry
-RUN pip install --no-cache-dir poetry
-
 # Copy the pyproject.toml and poetry.lock files
-COPY pyproject.toml poetry.lock* ./
+COPY pyproject.toml uv.lock* ./
 
-# Install project dependencies
-RUN poetry config virtualenvs.create false \
-    && poetry install --no-dev --no-interaction --no-ansi
+# Install project dependencies with uv
+RUN uv sync --frozen --no-install-project --no-dev
 
 # Copy the rest of your application's code
 COPY . .
-
-# Install Caddy
-RUN apk add --no-cache caddy
 
 # Copy Caddy configuration
 COPY Caddyfile /etc/caddy/Caddyfile
@@ -30,9 +26,16 @@ EXPOSE 80
 ENV FLASK_APP=main
 ENV FLASK_RUN_HOST=0.0.0.0
 
+ENV PATH="/app/.venv/bin:$PATH"
+
 # Create a non-root user to run the app
 # RUN adduser -D appuser
 # USER appuser
 
-# Run both Caddy and Waitress
+ENTRYPOINT []
+
+# Run both Caddy and WaitressS
+#CMD [
+#"caddy", "run", "--config", "/etc/caddy/Caddyfile", "&",
+#"gunicorn", "-w", "4", "main:create_app()", "--access-logfile=/var/log/gunicorn-access.log", "--error-logfile=/var/log/gunicorn-error.log"]
 CMD caddy run --config /etc/caddy/Caddyfile & gunicorn -w 4 'main:create_app()' --access-logfile=/var/log/gunicorn-access.log --error-logfile=/var/log/gunicorn-error.log
