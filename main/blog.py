@@ -17,7 +17,8 @@ POSTS_PATH = Path(__file__).resolve().parent.parent / "posts"
 
 def get_all_posts_files() -> list[str]:
     files = sorted(
-        filter(lambda x: x.endswith(".md"), os.listdir(POSTS_PATH)), reverse=True
+        filter(lambda x: x.endswith(".md"), os.listdir(POSTS_PATH)),
+        reverse=True,
     )
     return files
 
@@ -41,7 +42,9 @@ def get_all_posts_meta() -> list[dict[str, Any]]:
 
 def get_post_content(filename: str) -> tuple[str, str, str]:
     with open(POSTS_PATH / filename, "r") as f:
-        md = markdown.Markdown(extensions=["meta", "fenced_code", "codehilite"])
+        md = markdown.Markdown(
+            extensions=["meta", "fenced_code", "codehilite"]
+        )
         content = md.convert(f.read())
         return md.Meta["title"][0], md.Meta["date"][0], content
 
@@ -56,7 +59,9 @@ def index():
 @bp.route("/post/<post_title>")
 def post(post_title: str) -> str:
     with open(POSTS_PATH / (post_title + ".md")) as f:
-        md = markdown.Markdown(extensions=["meta", "fenced_code", "codehilite"])
+        md = markdown.Markdown(
+            extensions=["meta", "fenced_code", "codehilite"]
+        )
         html = md.convert(f.read())
 
         post_rendered: dict[str, Any] = {
@@ -70,7 +75,6 @@ def post(post_title: str) -> str:
 
 @bp.route("/feed")
 def feed():
-
     feed = Rss201rev2Feed(
         title="rafaelmc.net",
         link=f"{SITE_URL}/blog",
