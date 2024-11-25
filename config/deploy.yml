@@ -61,6 +61,7 @@ builder:
 #
 volumes:
   - /var/log/rafaelmc:/var/log
+  - /var/lib/rafaelmc:/var/lib/rafaelmc
 
 # Bridge fingerprinted assets, like JS and CSS, between versions to avoid
 # hitting 404 on in-flight requests. Combines all files from new and old
