@@ -18,7 +18,7 @@ def create_app(test_config=None, test_mode=False):
     if test_mode:
         stats_path = os.path.join(app.instance_path, "stats.json")
     else:
-        stats_path = os.path.join("var", "lib", "rafaelmc", "stats.json")
+        stats_path = os.path.join("/var/lib/rafaelmc/stats.json")
 
     if test_config is None:
         # load the instance config, if it exists, when not testing
