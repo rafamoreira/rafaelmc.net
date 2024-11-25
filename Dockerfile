@@ -38,6 +38,6 @@ ENTRYPOINT []
 #CMD [
 #"caddy", "run", "--config", "/etc/caddy/Caddyfile", "&",
 #"gunicorn", "-w", "4", "main:create_app()", "--access-logfile=/var/log/gunicorn-access.log", "--error-logfile=/var/log/gunicorn-error.log"]
-CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "&", "gunicorn", "-w", "4", "main:create_app()", "--access-logfile=/var/log/gunicorn-access.log", "--error-logfile=/var/log/gunicorn-error.log"]
-# CMD caddy run --config /etc/caddy/Caddyfile & gunicorn -w 4 'main:create_app()' --access-logfile=/var/log/gunicorn-access.log --error-logfile=/var/log/gunicorn-error.log
+# CMD ["caddy", "run", "--config", "/etc/caddy/Caddyfile", "&", "gunicorn", "-w", "4", "main:create_app()", "--access-logfile=/var/log/gunicorn-access.log", "--error-logfile=/var/log/gunicorn-error.log"]
+CMD caddy run --config /etc/caddy/Caddyfile & gunicorn -w 4 'main:create_app()' --access-logfile=/var/log/gunicorn-access.log --error-logfile=/var/log/gunicorn-error.log
 # CMD caddy run --config /etc/caddy/Caddyfile & gunicorn -w 4 'main:create_app()' --access-logfile=/var/log/gunicorn-access.log --error-logfile=/var/log/gunicorn-error.log
