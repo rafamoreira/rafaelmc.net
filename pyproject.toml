@@ -9,6 +9,7 @@ dependencies = [
     "flask>=3.1.0",
     "gunicorn>=23.0.0",
     "markdown>=3.7",
+    "simplejson>=3.19.3",
 ]
 
 [dependency-groups]
