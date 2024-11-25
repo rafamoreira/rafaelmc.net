@@ -20,7 +20,7 @@ COPY . .
 COPY Caddyfile /etc/caddy/Caddyfile
 
 # Make port 80 available to the world outside this container
-EXPOSE 80
+EXPOSE 8000
 
 # Set environment variables
 ENV FLASK_APP=main
@@ -38,4 +38,5 @@ ENTRYPOINT []
 #CMD [
 #"caddy", "run", "--config", "/etc/caddy/Caddyfile", "&",
 #"gunicorn", "-w", "4", "main:create_app()", "--access-logfile=/var/log/gunicorn-access.log", "--error-logfile=/var/log/gunicorn-error.log"]
-CMD caddy run --config /etc/caddy/Caddyfile & gunicorn -w 4 'main:create_app()' --access-logfile=/var/log/gunicorn-access.log --error-logfile=/var/log/gunicorn-error.log
+CMD gunicorn -w 4 'main:create_app()' --access-logfile=/var/log/gunicorn-access.log --error-logfile=/var/log/gunicorn-error.log
+# CMD caddy run --config /etc/caddy/Caddyfile & gunicorn -w 4 'main:create_app()' --access-logfile=/var/log/gunicorn-access.log --error-logfile=/var/log/gunicorn-error.log
